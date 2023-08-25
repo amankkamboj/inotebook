@@ -6,11 +6,16 @@ const AddNote = () => {
   const [note, setNote] = useState({
     title: "",
     description: "",
-    tag: "default",
+    tag: "",
   });
 
   const handleClick = () => {
     addNote(note.title, note.description, note.tag);
+    setNote({
+      title: "",
+      description: "",
+      tag: "",
+    });
   };
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -28,7 +33,7 @@ const AddNote = () => {
             id="title"
             aria-describedby="emailHelp"
             name="title"
-            onChange={onChange}
+            onChange={onChange} value={note.title}
           />
         </div>
         <div className="mb-3">
@@ -40,7 +45,7 @@ const AddNote = () => {
             className="form-control"
             id="description"
             name="description"
-            onChange={onChange}
+            onChange={onChange} value={note.description}
           />
         </div>
         <div className="mb-3">
@@ -52,7 +57,7 @@ const AddNote = () => {
             className="form-control"
             id="tag"
             name="tag"
-            onChange={onChange}
+            onChange={onChange} value={note.tag}
           />
         </div>
 
